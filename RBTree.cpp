@@ -5,7 +5,7 @@
 #include "RBTree.h"
 using namespace std;
 
-Node::Node(int data) {
+Node::Node(long data) {
     this->data = data;
     color = RED;
     left = right = parent = nullptr;
@@ -44,7 +44,7 @@ Node* RBTree::insertBST(Node *&root, Node *&ptr) {
     return root;
 }
 
-void RBTree::insertValue(int n) {
+void RBTree::insertValue(long n) {
     Node *node = new Node(n);
     root = insertBST(root, node);
     fixInsertRBTree(node);
@@ -234,7 +234,7 @@ void RBTree::fixDeleteRBTree(Node *&node) {
     }
 }
 
-Node* RBTree::deleteBST(Node *&root, int data) {
+Node* RBTree::deleteBST(Node *&root, long data) {
     if (root == nullptr)
         return root;
 
@@ -252,7 +252,7 @@ Node* RBTree::deleteBST(Node *&root, int data) {
     return deleteBST(root->right, temp->data);
 }
 
-void RBTree::deleteValue(int data) {
+void RBTree::deleteValue(long data) {
     Node *node = deleteBST(root, data);
     fixDeleteRBTree(node);
 }
@@ -262,7 +262,7 @@ void RBTree::inorderBST(Node *&ptr) {
         return;
 
     inorderBST(ptr->left);
-    cout << ptr->data << " " << ptr->color << endl;
+    //    cout << ptr->data << " " << ptr->color << endl;
     inorderBST(ptr->right);
 }
 
